@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Framework Demo</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<header class="page-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">PHP Framework Demo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav"
+                    aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mobile-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="/" class="nav-link">Articles</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">New article</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Edit articles</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Edit categories</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sign in</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sign up</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sign out</a></li>
+                </ul>
+                <!--<form class="form-inline my-2 my-lg-0">-->
+                <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+                <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>-->
+                <!--</form>-->
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="page-main">
+    <div class="alert alert-dismissible alert-warning">
+        <div class="container">
+            <h4 class="alert-heading">Warning!</h4>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p class="mb-0">Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue.
+                Praesent commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.
+            </p>
+        </div>
+    </div>
+    <!--Home-->
+    <div class="container">
+        <h1 class="py-4">Article list - home</h1>
+        <article id="article-0" class="mt-4 mb-4">
+            <header class="article-header bg-light px-2 py-1">
+                <a href="#article-0">Lorem ipsum 0</a>
+                <a href="#category-1" class="badge badge-primary">#category-1</a>
+            </header>
+            <p class="article-content px-2 py-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At delectus exercitationem ipsum minima
+                mollitia
+                nihil non officia pariatur rem vero? Delectus est iste nemo nostrum.
+            </p>
+            <footer class="article-footer bg-light text-md-right px-2 py-1">
+                18.11.2018 - <a href="#author-0" class="badge badge-danger">Admin</a>
+            </footer>
+        </article>
+    </div>
+
+    <hr>
+
+    <!--Article show-->
+    <div class="container">
+        <h1 class="py-4">Article show</h1>
+        <article id="article-0" class="mt-4 mb-4">
+            <header class="article-header bg-light px-2 py-1">
+                <h1>
+                    Lorem ipsum 0
+                    <small><a href="#category-1" class="badge badge-primary">#category-1</a></small>
+                </h1>
+            </header>
+            <p class="article-content px-2 py-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At delectus exercitationem ipsum minima
+                mollitia
+                nihil non officia pariatur rem vero? Delectus est iste nemo nostrum.
+            </p>
+            <footer class="article-footer bg-light text-md-right px-2 py-1">
+                18.11.2018 - <a href="#author-0" class="badge badge-secondary">Admin</a>
+            </footer>
+        </article>
+    </div>
+
+    <hr>
+
+
+    <!--Article list edit-->
+    <div class="container">
+        <h1 class="py-4">Article list - edit</h1>
+        <table class="table table-hover mt-4 mb-4">
+            <thead class="bg-light">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="#article-0">Lorem ipsum 0</a></td>
+                <td><a href="#author-0">Admin</a></td>
+                <td><a href="#category-0">Category</a></td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-sm">
+                        <i class="fas fa-pencil-alt"></i>&nbsp;Edit</a>
+                    <a href="#" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>&nbsp;Delete</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot class="bg-light">
+            <tr>
+                <td colspan="4">
+                    <a href="#" class="btn btn-primary btn-sm">New article</a>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <hr>
+    <!--Form register-->
+    <div class="container">
+        <h1 class="py-4">Form sign up</h1>
+        <form class="mt-4 mb-4">
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="email" class="form-control" id="exampleInputName" aria-describedby="nameHelp"
+                       placeholder="example123">
+                <small id="nameHelp" class="form-text text-muted">Alphanumeric characters only
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="example@example.com">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******"
+                       aria-describedby="passwordHelp1">
+                <small id="passwordHelp1" class="form-text text-muted">More than 5 characters, please
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Re-enter password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="*******"
+                       aria-describedby="passwordHelp2">
+                <small id="passwordHelp2" class="form-text text-muted">Passwords have to match
+                </small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Sign up</button>
+        </form>
+    </div>
+
+    <hr>
+    <!--Form login-->
+    <div class="container">
+        <h1 class="py-4">Form sign in</h1>
+        <form class="mt-4 mb-4">
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="email" class="form-control" id="exampleInputName" placeholder="example123">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
+        </form>
+    </div>
+
+    <hr>
+    <!--Form create/edit-->
+    <div class="container">
+        <h1 class="py-4">Form create/edit article</h1>
+        <form class="mt-4 mb-4">
+            <div class="form-group">
+                <label for="exampleInputTitle">Title</label>
+                <input type="text" class="form-control" id="exampleInputTitle" placeholder="Some title">
+            </div>
+            <div class="form-group">
+                <label for="exampleSelect">Category</label>
+                <select class="form-control" id="exampleSelect">
+                    <option value="0">Category 0</option>
+                    <option value="1">Category 1</option>
+                    <option value="2">Category 2</option>
+                    <option value="3">Category 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputContent">Content</label>
+                <textarea class="form-control" id="exampleInputContent" placeholder="Some text" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </form>
+    </div>
+
+    <hr>
+    <!--Form create/edit category-->
+    <div class="container">
+        <h1 class="py-4">Form create/edit category</h1>
+        <form class="mt-4 mb-4">
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="email" class="form-control" id="exampleInputName" placeholder="Some name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputDescription">Description</label>
+                <textarea class="form-control" id="exampleInputDescription" placeholder="Some text" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <!--Category list edit-->
+    <div class="container">
+        <h1 class="py-4">Category list - edit</h1>
+        <table class="table table-hover mt-4 mb-4">
+            <thead class="bg-light">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="#category-0">Category</a></td>
+                <td>Category 1</td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i>
+                        Edit</a>
+                    <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+                        Delete</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot class="bg-light">
+            <tr>
+                <td colspan="3">
+                    <a href="#" class="btn btn-primary btn-sm">New category</a>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</main>
+
+<footer class="page-footer">
+    <div class="container-fluid text-center text-light bg-dark py-3">
+        <div class="row">
+            <div class="col-md-12">
+                <p>This is a school project.</p>
+                <a href="https://github.com/nocturne32"> David Pocar</a>
+                &copy; 2019
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

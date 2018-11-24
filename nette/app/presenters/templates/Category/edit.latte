@@ -1,0 +1,14 @@
+{block content}
+
+<h1 n:block="title" class="py-4">Edit category</h1>
+{form editForm class=>'mt-4 mb-4'}
+    <div class="form-group">
+        {label name}
+        {input name, class=>'form-control', placeholder=>'Some name'}
+    </div>
+    <div class="form-group">
+        {label description}
+        {input description, class=>'form-control', placeholder=>'Some description', rows=>'3'}
+    </div>
+    {input submit, class=>'btn btn-primary btn-sm'}
+{/form}

@@ -1,0 +1,36 @@
+{block content}
+
+<h1 n:block="title" class="py-4">Sign up</h1>
+{form signUpForm, class=>'mt-4 mb-4'}
+    <div class="form-group">
+        {label username}
+        {input username, class=>'form-control', aria-describedby=>'nameHelp', placeholder=>'example123'}
+        <small id="nameHelp" class="form-text text-muted">Alphanumeric characters only
+        </small>
+    </div>
+    <div class="form-group">
+        {label fullname}
+        {input fullname, class=>'form-control', aria-describedby=>'nameHelp', placeholder=>'Example Name'}
+        <small id="nameHelp" class="form-text text-muted">How you want us to address you
+        </small>
+    </div>
+    <div class="form-group">
+        {label email}
+        {input email, class=>'form-control', aria-describedby=>'emailHelp', placeholder=>'example@example.com'}
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else
+        </small>
+    </div>
+    <div class="form-group">
+        {label password}
+        {input password, class=>'form-control', placeholder=>'*******', aria-describedby=>'passwordHelp1'}
+        <small id="passwordHelp1" class="form-text text-muted">More than 5 characters please
+        </small>
+    </div>
+    <div class="form-group">
+        {label password2}
+        {input password2, class=>'form-control', placeholder=>'*******', aria-describedby=>'passwordHelp2'}
+        <small id="passwordHelp2" class="form-text text-muted">Passwords have to match
+        </small>
+    </div>
+    {input submit, class=>'btn btn-primary btn-sm'}
+{/form}

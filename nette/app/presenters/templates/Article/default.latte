@@ -1,11 +1,12 @@
 {block content}
 
-<h1 n:block="title" class="py-4">Article list - home</h1>
-<article n:foreach="$articles as $article" id="article-{$article->id}" class="mt-4 mb-4">
+<article id="article-{$article->id}" class="mt-4 mb-4">
     <header class="article-header bg-light px-2 py-1">
-        <a n:href="Article:default $article->id">{$article->title}</a>
-        <a n:href="Homepage:default category=>$article->category->id" class="badge badge-primary">
-            #{$article->category->name}</a>
+        <h1>
+            <span n:block="title">{$article->title}</span>
+            <small><a n:href="Homepage:default category=>$article->category->id" class="badge badge-primary">
+                    #{$article->category->name}</a></small>
+        </h1>
     </header>
     <p class="article-content px-2 py-1">
         {$article->content}

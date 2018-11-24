@@ -12,4 +12,40 @@ session:
 
 
 services:
+	baseFormFactory: App\Forms\BaseFormFactory
+	signFormFactory: App\Forms\SignFormFactory
+	articleFormFactory: App\Forms\ArticleFormFactory
+	categoryFormFactory: App\Forms\CategoryFormFactory
+
+	articleListFacade: App\Model\ArticleListFacade
+	articleFacade: App\Model\ArticleFacade
+	categoryFacade: App\Model\CategoryFacade
+	userFacade: App\Model\UserFacade
+	authenticator: App\Model\Authenticator
+
 	router: App\RouterFactory::createRouter
+	permissions:
+	    class: Nette\Security\Permission
+	    setup:
+	        - addRole(guest)
+	        - addRole(user, guest)
+	        - addRole(admin, user)
+
+	        - addResource(Homepage)
+	        - addResource(Error4xx)
+	        - addResource(Error)
+	        - addResource(Article)
+	        - addResource(ArticleList)
+	        - addResource(Category)
+	        - addResource(CategoryList)
+	        - addResource(Sign)
+
+	        - deny(user,    Sign,       [in, up])
+
+	        - allow(guest,  Homepage)
+	        - allow(guest,  Sign)
+	        - allow(guest,  Article,    [default])
+	        - allow(user,   Article,    [add, edit])
+	        - allow(user,   ArticleList)
+	        - allow(admin,  Category)
+	        - allow(admin,  CategoryList)
