@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <tr n:foreach="$categories as $category">
-        <td><a n:href="Homepage:default category=>$category->id">{$category->name|truncate:50}</a></td>
+        <td><a n:href="Homepage:default category=>$category->id">{$category->label|truncate:50}</a></td>
         <td>{$category->description|truncate:50}</td>
         <td>
             <a n:href="Category:edit $category->id" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i>

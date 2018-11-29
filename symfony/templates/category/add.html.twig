@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="py-4">{% block title %}Create category{% endblock %}</h1>
+    {{ form_start(form, {attr: {class: 'mt-4 mb-4'} }) }}
+    {{ form_errors(form) }}
+    <div class="form-group">
+        {{ form_label(form.label) }}
+        {{ form_widget(form.label, {attr: {
+            class: 'form-control',
+            placeholder: 'Some label'
+        } }) }}
+        {{ form_errors(form.label) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {attr: {
+            class: 'form-control',
+            placeholder: 'Some content',
+            rows: '3'
+        } }) }}
+        {{ form_errors(form.description) }}
+    </div>
+    {{ form_widget(form.submit, {attr: {
+        class: 'btn btn-primary btn-sm'
+    } }) }}
+    {{ form_end(form) }}
+{% endblock %}

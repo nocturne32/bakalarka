@@ -17,7 +17,6 @@ services:
 	articleFormFactory: App\Forms\ArticleFormFactory
 	categoryFormFactory: App\Forms\CategoryFormFactory
 
-	articleListFacade: App\Model\ArticleListFacade
 	articleFacade: App\Model\ArticleFacade
 	categoryFacade: App\Model\CategoryFacade
 	userFacade: App\Model\UserFacade
@@ -28,24 +27,26 @@ services:
 	    class: Nette\Security\Permission
 	    setup:
 	        - addRole(guest)
-	        - addRole(user, guest)
-	        - addRole(admin, user)
+	        - addRole(ROLE_USER, guest)
+	        - addRole(ROLE_ADMIN, ROLE_USER)
 
-	        - addResource(Homepage)
-	        - addResource(Error4xx)
 	        - addResource(Error)
+	        - addResource(Error4xx)
+	        - addResource(Homepage)
 	        - addResource(Article)
 	        - addResource(ArticleList)
 	        - addResource(Category)
 	        - addResource(CategoryList)
 	        - addResource(Sign)
 
-	        - deny(user,    Sign,       [in, up])
+	        - deny(ROLE_USER, Sign, [in, up])
 
-	        - allow(guest,  Homepage)
-	        - allow(guest,  Sign)
-	        - allow(guest,  Article,    [default])
-	        - allow(user,   Article,    [add, edit])
-	        - allow(user,   ArticleList)
-	        - allow(admin,  Category)
-	        - allow(admin,  CategoryList)
+	        - allow(guest, Error)
+	        - allow(guest, Error4xx)
+	        - allow(guest, Homepage)
+	        - allow(guest, Sign)
+	        - allow(guest, Article, [default])
+	        - allow(ROLE_USER, Article, [add, edit])
+	        - allow(ROLE_USER, ArticleList)
+	        - allow(ROLE_ADMIN, Category)
+	        - allow(ROLE_ADMIN, CategoryList)

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .help-text {
+            display: block;
+            margin-top: 0.25rem;
+            color: #868e96;
+            font-size: 80%;
+            font-weight: 400;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="py-4">{% block title %}Sign up{% endblock %}</h1>
+
+    {{ form_start(signUpForm, {attr: {class: 'mt-4 mb-4'} }) }}
+    {{ form_errors(signUpForm) }}
+
+    <div class="form-group">
+        {{ form_label(signUpForm.username) }}
+        {{ form_widget(signUpForm.username, {attr: {
+            class: 'form-control',
+            placeholder: 'example123'
+        } }) }}
+        {{ form_help(signUpForm.username, {attr: {
+            class: 'form-text text-muted'
+        } }) }}
+        {{ form_errors(signUpForm.username) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(signUpForm.fullname) }}
+        {{ form_widget(signUpForm.fullname, {attr: {
+            class: 'form-control',
+            placeholder: 'Example Name'
+        } }) }}
+        {{ form_help(signUpForm.fullname, {attr: {
+            class: 'form-text text-muted'
+        } }) }}
+        {{ form_errors(signUpForm.fullname) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(signUpForm.email) }}
+        {{ form_widget(signUpForm.email, {attr: {
+            class: 'form-control',
+            placeholder: 'example@example.com'
+        } }) }}
+        {{ form_help(signUpForm.email, {attr: {
+            class: 'form-text text-muted'
+        } }) }}
+        {{ form_errors(signUpForm.email) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(signUpForm.password.first) }}
+        {{ form_widget(signUpForm.password.first, {attr: {
+            class: 'form-control',
+            placeholder: '*******'
+        } }) }}
+        {{ form_help(signUpForm.password.first, {attr: {
+            class: 'form-text text-muted'
+        } }) }}
+        {{ form_errors(signUpForm.password.first) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(signUpForm.password.second) }}
+        {{ form_widget(signUpForm.password.second, {attr: {
+            class: 'form-control',
+            placeholder: '*******'
+        } }) }}
+        {{ form_help(signUpForm.password.second, {attr: {
+            class: 'form-text text-muted'
+        } }) }}
+        {{ form_errors(signUpForm.password.second) }}
+    </div>
+    {{ form_widget(signUpForm.submit, {attr: {
+        class: 'btn btn-primary btn-sm'
+    } }) }}
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+    {{ form_end(signUpForm) }}
+
+{% endblock %}

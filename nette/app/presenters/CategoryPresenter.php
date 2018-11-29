@@ -51,12 +51,12 @@ class CategoryPresenter extends BasePresenter
             $this->flashMessage('Category does not exist.', 'alert-warning');
             $this->redirect('CategoryList:default');
         }
-        $name = $category->name;
+        $label = $category->label;
         try {
             $category->delete();
-            $this->flashMessage("Category \"{$name}\" has been deleted!", 'alert-danger');
+            $this->flashMessage("Category \"{$label}\" has been deleted!", 'alert-danger');
         } catch (Nette\Database\ConstraintViolationException $e) {
-            $this->flashMessage("Cannot delete '{$name}', 
+            $this->flashMessage("Cannot delete '{$label}', 
             there are still articles in this category.", 'alert-danger');
         }
         $this->redirect('CategoryList:default');
@@ -70,7 +70,7 @@ class CategoryPresenter extends BasePresenter
     {
         return $this->categoryFormFactory->create(function ($form, $values) {
             $this->categoryFacade->insertCategory($values);
-            $this->flashMessage("Category \"{$values->name}\" has been created!", 'alert-success');
+            $this->flashMessage("Category \"{$values->label}\" has been created!", 'alert-success');
             $this->redirect('CategoryList:default');
         });
     }
@@ -84,7 +84,7 @@ class CategoryPresenter extends BasePresenter
         return $this->categoryFormFactory->create(function ($form, $values) {
             $category = $this->categoryFacade->getCategory($values->id);
             $category->update($values);
-            $this->flashMessage("Category \"{$category->name}\" has been edited!", 'alert-warning');
+            $this->flashMessage("Category \"{$category->label}\" has been edited!", 'alert-warning');
             $this->redirect('CategoryList:default');
         });
     }

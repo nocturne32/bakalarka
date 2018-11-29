@@ -45,6 +45,6 @@ class Authenticator implements IAuthenticator
             ]);
         }
 
-        return new Identity($user->getPrimary(), $user->role, ['username' => $user->username]);
+        return new Identity($user->getPrimary(), $user->roles, ['username' => $user->username]);
     }
 }

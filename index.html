@@ -56,7 +56,8 @@
         <article id="article-0" class="mt-4 mb-4">
             <header class="article-header bg-light px-2 py-1">
                 <a href="#article-0">Lorem ipsum 0</a>
-                <a href="#category-1" class="badge badge-primary">#category-1</a>
+                <a href="#category-1" class="badge badge-primary"
+                   data-toggle="tooltip" data-placement="top" title="Some description">#category-1</a>
             </header>
             <p class="article-content px-2 py-1">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At delectus exercitationem ipsum minima
@@ -78,7 +79,8 @@
             <header class="article-header bg-light px-2 py-1">
                 <h1>
                     Lorem ipsum 0
-                    <small><a href="#category-1" class="badge badge-primary">#category-1</a></small>
+                    <small><a href="#category-1" class="badge badge-primary"
+                              data-toggle="tooltip" data-placement="top" title="Some description">#category-1</a></small>
                 </h1>
             </header>
             <p class="article-content px-2 py-1">
@@ -87,7 +89,7 @@
                 nihil non officia pariatur rem vero? Delectus est iste nemo nostrum.
             </p>
             <footer class="article-footer bg-light text-md-right px-2 py-1">
-                18.11.2018 - <a href="#author-0" class="badge badge-secondary">Admin</a>
+                18.11.2018 - <a href="#author-0" class="badge badge-danger">#Admin</a>
             </footer>
         </article>
     </div>
@@ -133,13 +135,20 @@
     <hr>
     <!--Form register-->
     <div class="container">
-        <h1 class="py-4">Form sign up</h1>
+        <h1 class="py-4">Sign up</h1>
         <form class="mt-4 mb-4">
             <div class="form-group">
-                <label for="exampleInputName">Name</label>
-                <input type="email" class="form-control" id="exampleInputName" aria-describedby="nameHelp"
+                <label for="exampleInputUsername">Username</label>
+                <input type="email" class="form-control" id="exampleInputUsername" aria-describedby="usernameHelp"
                        placeholder="example123">
-                <small id="nameHelp" class="form-text text-muted">Alphanumeric characters only
+                <small id="usernameHelp" class="form-text text-muted">Alphanumeric characters only
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFullname">Full name</label>
+                <input type="email" class="form-control" id="exampleInputFullname" aria-describedby="fullnameHelp"
+                       placeholder="example123">
+                <small id="fullnameHelp" class="form-text text-muted">Alphanumeric characters only
                 </small>
             </div>
             <div class="form-group">
@@ -170,7 +179,7 @@
     <hr>
     <!--Form login-->
     <div class="container">
-        <h1 class="py-4">Form sign in</h1>
+        <h1 class="py-4">Sign in</h1>
         <form class="mt-4 mb-4">
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
@@ -187,7 +196,7 @@
     <hr>
     <!--Form create/edit-->
     <div class="container">
-        <h1 class="py-4">Form create/edit article</h1>
+        <h1 class="py-4">Create/edit article</h1>
         <form class="mt-4 mb-4">
             <div class="form-group">
                 <label for="exampleInputTitle">Title</label>
@@ -213,7 +222,7 @@
     <hr>
     <!--Form create/edit category-->
     <div class="container">
-        <h1 class="py-4">Form create/edit category</h1>
+        <h1 class="py-4">Create/edit category</h1>
         <form class="mt-4 mb-4">
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
@@ -278,8 +287,14 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html>

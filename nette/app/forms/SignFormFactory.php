@@ -46,7 +46,7 @@ class SignFormFactory
             ->addRule(Form::EQUAL, 'Passwords have to match.', $form['password'])
             ->setOmitted();
         $form->onSuccess[] = function ($form, $values) use ($onSuccess) {
-            $values->role = 'user';
+            $values->roles = 'user';
             $values->registered_at = new \DateTimeImmutable('now');
             $onSuccess($form, $values);
         };

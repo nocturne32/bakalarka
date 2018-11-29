@@ -1,20 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/ArticleListController.php'|file_link(0) }}">src/Controller/ArticleListController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/article_list/index.html.twig'|file_link(0) }}">templates/article_list/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1 class="py-4">{% block title %}Article list - edit{% endblock %}</h1>
+    <table class="table table-hover mt-4 mb-4">
+        <thead class="bg-light">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+        <tr>
+            <td><a href="{{ path('app_article', {'id': article.id}) }}">{{ article.title }}</a></td>
+            <td><a href="{{ path('app_homepage', {'author': article.user.id}) }}">{{ article.user.username }}</a></td>
+            <td><a href="{{ path('app_homepage', {'category': article.category.id}) }}">{{ article.category.label }}</a></td>
+            <td>
+                <a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-pencil-alt"></i>&nbsp;Edit</a>
+                <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i>&nbsp;Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="bg-light">
+        <tr>
+            <td colspan="4">
+                <a href="{{ path('app_article_add') }}" class="btn btn-primary btn-sm">New article</a>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
 {% endblock %}

@@ -5,7 +5,7 @@
         <h1>
             <span n:block="title">{$article->title}</span>
             <small><a n:href="Homepage:default category=>$article->category->id" class="badge badge-primary">
-                    #{$article->category->name}</a></small>
+                    {$article->category->label}</a></small>
         </h1>
     </header>
     <p class="article-content px-2 py-1">
@@ -13,7 +13,7 @@
     </p>
     <footer class="article-footer bg-light text-md-right px-2 py-1">
         {$article->created_at|date:'d.m.Y'} -
-        <a n:href="Homepage:default author=>$article->user->id" class="badge badge-primary">
+        <a n:href="Homepage:default author=>$article->user->id" class="badge badge-danger">
             {$article->user->username}</a>
     </footer>
 </article>

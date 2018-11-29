@@ -339,3 +339,6 @@ phpunit.phar
 
 
 # End of https://www.gitignore.io/api/node,yii2,nette,bower,windows,symfony,laravel,composer,phpstorm,codeigniter
+
+temp/
+symfony_old

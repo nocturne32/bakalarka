@@ -8,6 +8,7 @@ namespace App\Model;
 use App\Common\Table;
 use Nette\Database\Context;
 use Nette\Database\Table\ActiveRow;
+use Nette\Database\Table\Selection;
 
 class ArticleFacade
 {
@@ -40,5 +41,23 @@ class ArticleFacade
     {
         return $this->connection->table(Table::ARTICLE)
             ->insert($values);
+    }
+
+    /**
+     * @return Selection
+     */
+    public function findAllArticles(): Selection
+    {
+        return $this->connection->table(Table::ARTICLE)
+            ->order('created_at DESC');
+    }
+
+    /**
+     * @param array $conditions
+     * @return Selection
+     */
+    public function findArticlesBy(array $conditions): Selection
+    {
+        return $this->findAllArticles()->where($conditions);
     }
 }

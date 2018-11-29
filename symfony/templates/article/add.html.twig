@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="py-4">{% block title %}Create article{% endblock %}</h1>
+    {{ form_start(form, {attr: {class: 'mt-4 mb-4'} }) }}
+    {{ form_errors(form) }}
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title, {attr: {
+            class: 'form-control',
+            placeholder: 'Some title'
+        } }) }}
+        {{ form_errors(form.title) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.category) }}
+        {{ form_widget(form.category, {attr: {
+            class: 'form-control'
+        } }) }}
+        {{ form_errors(form.category) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.content) }}
+        {{ form_widget(form.content, {attr: {
+            class: 'form-control',
+            placeholder: 'Some content',
+            rows: '3'
+        } }) }}
+        {{ form_errors(form.content) }}
+    </div>
+    {{ form_widget(form.submit, {attr: {
+        class: 'btn btn-primary btn-sm'
+    } }) }}
+    {{ form_end(form) }}
+{% endblock %}

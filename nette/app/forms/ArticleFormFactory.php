@@ -41,7 +41,7 @@ class ArticleFormFactory
         $form->addText('title', 'Title:')
             ->setRequired();
         $form->addSelect('category_id', 'Category:')
-            ->setItems($this->categoryFacade->findAllCategories()->fetchPairs('id', 'name'))
+            ->setItems($this->categoryFacade->findAllCategories()->fetchPairs('id', 'label'))
             ->setRequired();
         $form->addTextArea('content', 'Content:')
             ->setRequired();

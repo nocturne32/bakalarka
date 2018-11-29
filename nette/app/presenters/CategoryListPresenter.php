@@ -32,12 +32,12 @@ class CategoryListPresenter extends BasePresenter
             $this->flashMessage('Category does not exist.', 'alert-warning');
             $this->redirect('ArticleList:default');
         }
-        $name = $category->name;
+        $label = $category->label;
         try {
             $category->delete();
-            $this->flashMessage("Category \"{$name}\" has been deleted!", 'alert-danger');
+            $this->flashMessage("Category \"{$label}\" has been deleted!", 'alert-danger');
         } catch (Nette\Database\ConstraintViolationException $e) {
-            $this->flashMessage("Cannot delete '{$name}', 
+            $this->flashMessage("Cannot delete '{$label}', 
             there are still articles in this category.", 'alert-danger');
         }
         $this->redirect('CategoryList:default');

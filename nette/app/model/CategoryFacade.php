@@ -30,7 +30,8 @@ class CategoryFacade
      */
     public function findAllCategories(): Selection
     {
-        return $this->connection->table(Table::CATEGORY);
+        return $this->connection->table(Table::CATEGORY)
+            ->order('id DESC');
     }
 
     /**

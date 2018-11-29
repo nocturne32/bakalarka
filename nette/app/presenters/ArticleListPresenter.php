@@ -2,20 +2,21 @@
 
 namespace App\Presenters;
 
+use App\Model\ArticleFacade;
 use App\Model\ArticleListFacade;
 
 
 class ArticleListPresenter extends BasePresenter
 {
-    /** @var ArticleListFacade @inject */
-    public $articleListFacade;
+    /** @var ArticleFacade @inject */
+    public $articleFacade;
 
     public function renderDefault(): void
     {
         if ($this->isUserAdmin()) {
-            $articles = $this->articleListFacade->findAllArticles();
+            $articles = $this->articleFacade->findAllArticles();
         } else {
-            $articles = $this->articleListFacade->findArticlesBy([
+            $articles = $this->articleFacade->findArticlesBy([
                 'user.id' => $this->user->getId()
             ]);
         }
@@ -29,7 +30,7 @@ class ArticleListPresenter extends BasePresenter
      */
     public function handleDelete(int $id): void
     {
-        $article = $this->articleListFacade->getArticle($id);
+        $article = $this->articleFacade->getArticle($id);
         $this->flashMessage("Article \"{$article->title}\" has been deleted!", 'alert-danger');
         $article->delete();
         $this->redirect('ArticleList:default');

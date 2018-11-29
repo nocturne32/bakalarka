@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {#<h1 class="py-4">{% block title %}Article show{% endblock %}</h1>#}
+    <article id="article-{{ article.id }}" class="mt-4 mb-4">
+        <header class="article-header bg-light px-2 py-1">
+            <h1>
+                {% block title %}{{ article.title }}{% endblock %}
+                <small><a href="{{ path('app_homepage', {'category': article.category.id}) }}"
+                          class="badge badge-primary"
+                          data-toggle="tooltip" data-placement="top"
+                          title="{{ article.category.description }}">{{ article.category.label }}</a></small>
+            </h1>
+        </header>
+        <p class="article-content px-2 py-1">{{ article.content }}</p>
+        <footer class="article-footer bg-light text-md-right px-2 py-1">
+            {{ article.createdAt|date('d.m.Y') }} - <a href="{{ path('app_homepage', {'author': article.user.id}) }}"
+                                                       class="badge badge-danger">{{ article.user.username }}</a>
+        </footer>
+    </article>
 {% endblock %}

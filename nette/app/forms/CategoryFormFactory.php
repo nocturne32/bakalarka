@@ -35,7 +35,7 @@ class CategoryFormFactory
     {
         $form = $this->formFactory->create();
         $form->addHidden('id');
-        $form->addText('name', 'Name:')
+        $form->addText('label', 'Label:')
             ->setRequired();
         $form->addTextArea('description', 'Description:');
         $form->onSuccess[] = function ($form, $values) use ($onSuccess) {

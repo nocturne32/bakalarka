@@ -3,16 +3,16 @@
 namespace App\Presenters;
 
 
-use App\Model\ArticleListFacade;
+use App\Model\ArticleFacade;
 
 class HomepagePresenter extends BasePresenter
 {
-    /** @var ArticleListFacade @inject */
-    public $articleListFacade;
+    /** @var ArticleFacade @inject */
+    public $articleFacade;
 
     public function renderDefault(): void
     {
-        $articles = $this->articleListFacade->findAllArticles();
+        $articles = $this->articleFacade->findAllArticles();
         $query = $this->getHttpRequest()->getQuery();
         if (isset($query['author'])) {
             $articles->where('user.id', $query['author']);
