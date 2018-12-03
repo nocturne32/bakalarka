@@ -15,7 +15,9 @@ class BaseFormFactory
      */
     public function create(): Form
     {
-        return new Form();
+        $form = new Form();
+        $form->addProtection();
+        return $form;
     }
 
 }
