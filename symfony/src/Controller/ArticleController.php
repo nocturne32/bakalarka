@@ -13,13 +13,35 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
+
+    /**
+     * @Route("/article-list", name="app_article_list")
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function index(EntityManagerInterface $em): Response
+    {
+        $articles = $em->getRepository(Article::class);
+
+        $user = $this->getUser();
+        if ($user->isAdmin()) {
+            $articles = $articles->findBy([], ['created_at' => 'DESC']);
+        } else {
+            $articles = $articles->findBy(['user' => $user->getId()], ['created_at' => 'DESC']);
+        }
+        return $this->render('article/index.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+
     /**
      * @Route("/article/{id<\d+>}", name="app_article")
      * @param EntityManagerInterface $em
      * @param int $id
      * @return Response
      */
-    public function index(EntityManagerInterface $em, int $id): Response
+    public function detail(EntityManagerInterface $em, int $id): Response
     {
         $article = $em->find(Article::class, $id);
 

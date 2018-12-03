@@ -14,6 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
+     * @Route("/category-list", name="app_category_list")
+     * @IsGranted("ROLE_ADMIN")
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function index(EntityManagerInterface $em): Response
+    {
+        $categories = $em->getRepository(Category::class)
+            ->findBy([], ['id' => 'DESC']);
+
+        return $this->render('category/index.html.twig', [
+            'categories' => $categories,
+        ]);
+    }
+
+    /**
      * @Route("/category/add", name="app_category_add")
      * @IsGranted("ROLE_ADMIN")
      * @param Request $request
