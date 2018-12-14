@@ -21,7 +21,10 @@ class SecurityController extends AbstractController
      */
     public function in(AuthenticationUtils $authenticationUtils): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_ANONYMOUSLY');
+        if ($this->getUser()) {
+            $this->addFlash('warning', 'You are already signed in.');
+            return $this->redirectToRoute('app_homepage');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -44,6 +47,11 @@ class SecurityController extends AbstractController
      */
     public function up(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, Request $request): Response
     {
+        if ($this->getUser()) {
+            $this->addFlash('warning', 'You are already signed in.');
+            return $this->redirectToRoute('app_homepage');
+        }
+
         $user = new User();
         $form = $this->createForm(SignUpType::class, $user);
         $form->handleRequest($request);
@@ -59,7 +67,7 @@ class SecurityController extends AbstractController
         }
         return $this->render('security/up.html.twig', [
             'controller_name' => 'SignController',
-            'signUpForm' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 }

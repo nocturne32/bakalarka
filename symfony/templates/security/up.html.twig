@@ -16,70 +16,70 @@
 {% block body %}
     <h1 class="py-4">{% block title %}Sign up{% endblock %}</h1>
 
-    {{ form_start(signUpForm, {attr: {class: 'mt-4 mb-4'} }) }}
-    {{ form_errors(signUpForm) }}
+    {{ form_start(form, {attr: {class: 'mt-4 mb-4'} }) }}
+    {{ form_errors(form) }}
 
     <div class="form-group">
-        {{ form_label(signUpForm.username) }}
-        {{ form_widget(signUpForm.username, {attr: {
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username, {attr: {
             class: 'form-control',
             placeholder: 'example123'
         } }) }}
-        {{ form_help(signUpForm.username, {attr: {
+        {{ form_help(form.username, {attr: {
             class: 'form-text text-muted'
         } }) }}
-        {{ form_errors(signUpForm.username) }}
+        {{ form_errors(form.username) }}
     </div>
     <div class="form-group">
-        {{ form_label(signUpForm.fullname) }}
-        {{ form_widget(signUpForm.fullname, {attr: {
+        {{ form_label(form.fullname) }}
+        {{ form_widget(form.fullname, {attr: {
             class: 'form-control',
             placeholder: 'Example Name'
         } }) }}
-        {{ form_help(signUpForm.fullname, {attr: {
+        {{ form_help(form.fullname, {attr: {
             class: 'form-text text-muted'
         } }) }}
-        {{ form_errors(signUpForm.fullname) }}
+        {{ form_errors(form.fullname) }}
     </div>
     <div class="form-group">
-        {{ form_label(signUpForm.email) }}
-        {{ form_widget(signUpForm.email, {attr: {
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, {attr: {
             class: 'form-control',
             placeholder: 'example@example.com'
         } }) }}
-        {{ form_help(signUpForm.email, {attr: {
+        {{ form_help(form.email, {attr: {
             class: 'form-text text-muted'
         } }) }}
-        {{ form_errors(signUpForm.email) }}
+        {{ form_errors(form.email) }}
     </div>
     <div class="form-group">
-        {{ form_label(signUpForm.password.first) }}
-        {{ form_widget(signUpForm.password.first, {attr: {
+        {{ form_label(form.password.first) }}
+        {{ form_widget(form.password.first, {attr: {
             class: 'form-control',
             placeholder: '*******'
         } }) }}
-        {{ form_help(signUpForm.password.first, {attr: {
+        {{ form_help(form.password.first, {attr: {
             class: 'form-text text-muted'
         } }) }}
-        {{ form_errors(signUpForm.password.first) }}
+        {{ form_errors(form.password.first) }}
     </div>
     <div class="form-group">
-        {{ form_label(signUpForm.password.second) }}
-        {{ form_widget(signUpForm.password.second, {attr: {
+        {{ form_label(form.password.second) }}
+        {{ form_widget(form.password.second, {attr: {
             class: 'form-control',
             placeholder: '*******'
         } }) }}
-        {{ form_help(signUpForm.password.second, {attr: {
+        {{ form_help(form.password.second, {attr: {
             class: 'form-text text-muted'
         } }) }}
-        {{ form_errors(signUpForm.password.second) }}
+        {{ form_errors(form.password.second) }}
     </div>
-    {{ form_widget(signUpForm.submit, {attr: {
+    {{ form_widget(form.submit, {attr: {
         class: 'btn btn-primary btn-sm'
     } }) }}
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}">
-    {{ form_end(signUpForm) }}
+    {{ form_end(form) }}
 
 {% endblock %}
