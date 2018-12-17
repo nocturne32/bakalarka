@@ -160,6 +160,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom
+        Watson\Active\ActiveServiceProvider::class
+
     ],
 
     /*
