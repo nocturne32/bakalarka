@@ -44,13 +44,12 @@ class ArticleController extends AbstractController
     public function detail(EntityManagerInterface $em, int $id): Response
     {
         $article = $em->find(Article::class, $id);
-
         if (!$article) {
             $this->addFlash('warning', 'Article was not found.');
             return $this->redirectToRoute('app_homepage');
         }
 
-        return $this->render('article/index.html.twig', [
+        return $this->render('article/detail.html.twig', [
             'article' => $article,
         ]);
     }
