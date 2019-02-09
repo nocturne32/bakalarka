@@ -5,7 +5,7 @@
     <article id="article-{{ article.id }}" class="mt-4 mb-4">
         <header class="article-header bg-light px-2 py-1">
             <h1>
-                {% block title %}{{ article.title }}{% endblock %}
+                {% block title %}{{ article.title }}{% endblock %} |
                 <small><a href="{{ path('app_homepage', {'category': article.category.id}) }}"
                           class="badge badge-primary"
                           data-toggle="tooltip" data-placement="top"

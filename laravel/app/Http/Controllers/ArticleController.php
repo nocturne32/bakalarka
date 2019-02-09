@@ -3,106 +3,123 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $articles = Article::all();
-
-        //        ze symfony
-//        $user = $this->getUser();
-//        if ($user->isAdmin()) {
-//            $articles = $articles->findBy([], ['created_at' => 'DESC']);
-//        } else {
-//            $articles = $articles->findBy(['user' => $user->getId()], ['created_at' => 'DESC']);
-//        }
-
+        $articles = Article::orderBy('id', 'DESC')->get();
         return view('article.index', [
-            'articles' => $articles,
+            'articles' => $articles
         ]);
     }
 
-    public function detail(int $id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $article = null;
-
-//        if (!$article) {
-//            $this->addFlash('warning', 'Article was not found.');
-//            return $this->redirectToRoute('app_homepage');
-//        }
-
-        return view('article.detail', [
-            'article' => $article,
-        ]);
-    }
-
-    public function add()
-    {
-//        $form = $this->createForm(ArticleType::class);
-//
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $article = $form->getData();
-//            $article->setUser($this->getUser());
-//
-//            $em->persist($article);
-//            $em->flush();
-//
-//            $this->addFlash('success', 'Your article was successfully created!');
-//            return $this->redirectToRoute('app_article_list');
-//        }
+        $categories = Category::all();
         return view('article.add', [
-//            'form' => $form->createView()
+            'categories' => $categories
         ]);
     }
 
-    public function edit(int $id)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $article = null;
+        try {
+            Article::create([
+                'title' => $request['title'],
+                'user_id' => 1,
+                'category_id' => $request['category_id'],
+                'content' => $request['content']
+            ]);
+        } catch (QueryException $exception) {
 
-//        if (!$article) {
-//            $this->addFlash('warning', 'Article was not found.');
-//            return $this->redirectToRoute('app_article_list');
-//        }
-//
-//        $form->setData($article);
-//
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $article = $form->getData();
-//
-//            $em->persist($article);
-//            $em->flush();
-//
-//            $this->addFlash('success', 'Your article was successfully edited!');
-//            return $this->redirectToRoute('app_article_list');
-//        }
+        }
+
+        return redirect()->route('app_article_list');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Article $article
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Article $article)
+    {
+        return view('article.detail', [
+            'article' => $article
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Article $article
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Article $article)
+    {
+        $categories = Category::all();
         return view('article.edit', [
-//            'form' => $form->createView()
+            'article' => $article,
+            'categories' => $categories
         ]);
     }
 
-    public function delete(int $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Article $article
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Article $article)
     {
-//        $article = $em->find(Article::class, $id);
-//
-//        if (!$article) {
-//            $this->addFlash('warning', 'Article was not found.');
-//            return $this->redirectToRoute('app_article_list');
-//        }
-//
-//        $user = $this->getUser();
-//
-//        if ($user->isAdmin() || $user === $article->getUser()) {
-//            $this->addFlash('success', 'Article "' . $article->getTitle() . '" was removed.');
-//            $em->remove($article);
-//            $em->flush();
-//        } else {
-//            $this->addFlash('danger', 'You cannot perform this operation.');
-//        }
-//
-//        return $this->redirectToRoute('app_article_list');
+        try {
+            $article->title = $request['title'];
+            $article->category_id = $request['category_id'];
+            $article->content = $request['content'];
+
+            $article->save();
+
+        } catch (QueryException $exception) {
+
+        }
+        return redirect()->route('app_article_list');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Article $article
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Article $article)
+    {
+        try {
+            $article->delete();
+        } catch (QueryException $exception) {
+
+        }
+        return redirect()->route('app_article_list');
     }
 }

@@ -2,11 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use Illuminate\Http\Request;
+
 class HomepageController extends Controller
 {
-    public function index()
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request)
     {
-        $articles = [];
+        if (isset($request['author'])) {
+            $articles = Article::where('user_id', $request['author'])->get();
+        } elseif (isset($request['category'])) {
+            $articles = Article::where('category_id', $request['category'])->get();
+        } else {
+            $articles = Article::all();
+        }
 
 //        ze symfony
 //        if ($id = $request->query->get('author')) {

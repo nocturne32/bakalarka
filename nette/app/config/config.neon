@@ -1,5 +1,9 @@
 parameters:
 
+database:
+    dsn: 'mysql:host=127.0.0.1;dbname=bakalarka'
+    user: root
+    password: root
 
 application:
 	errorPresenter: Error

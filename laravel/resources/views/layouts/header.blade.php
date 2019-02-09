@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('app_homepage') }}">PHP Framework Demo</a>
+        <a class="navbar-brand" href="{{ route('app_homepage') }}">Laravel demo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav"
                 aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

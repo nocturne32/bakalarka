@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset}PHP Framework Demo (nette)</title>
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Nette demo</title>
 
     <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -16,7 +16,7 @@
 <header class="page-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" n:href="Homepage:">PHP Framework Demo</a>
+            <a class="navbar-brand" n:href="Homepage:">Nette demo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav"
                     aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,18 +28,21 @@
                         <a n:class="nav-link, $presenter->isLinkCurrent()
                         || $presenter->isLinkCurrent('Article:default') ? active" n:href="Homepage:">Articles</a></li>
                     <li class="nav-item" n:if="$user->isLoggedIn()">
-                        <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="Article:add">New article</a></li>
+                        <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="Article:add">New article</a>
+                    </li>
                     <li class="nav-item" n:if="$user->isLoggedIn()">
                         <a n:class="nav-link, $presenter->isLinkCurrent()
-                        || $presenter->isLinkCurrent('Article:edit') ? active" n:href="ArticleList:">Edit articles</a></li>
+                        || $presenter->isLinkCurrent('Article:edit') ? active" n:href="ArticleList:">Edit articles</a>
+                    </li>
                     <li class="nav-item" n:if="$user->isInRole('ROLE_ADMIN')">
-                        <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="CategoryList:">Edit categories</a></li>
+                        <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="CategoryList:">Edit
+                            categories</a></li>
                     <li class="nav-item" n:if="!$user->isLoggedIn()">
                         <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="Sign:in">Sign in</a></li>
                     <li class="nav-item" n:if="!$user->isLoggedIn()">
                         <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="Sign:up">Sign up</a></li>
                     {*<li class="nav-item" n:if="$user->isLoggedIn()">*}
-                        {*<a n:class="nav-link, $presenter->isLinkCurrent() ? active" href="#">{$user->getIdentity()->username}</a></li>*}
+                    {*<a n:class="nav-link, $presenter->isLinkCurrent() ? active" href="#">{$user->getIdentity()->username}</a></li>*}
                     <li class="nav-item" n:if="$user->isLoggedIn()">
                         <a n:class="nav-link, $presenter->isLinkCurrent() ? active" n:href="Sign:out">Logout</a></li>
                 </ul>
@@ -89,7 +92,7 @@
             crossorigin="anonymous"></script>
     <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>

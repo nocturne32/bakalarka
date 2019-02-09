@@ -2,8 +2,8 @@
 
 <h1 n:block="title" class="py-4">Article list - home</h1>
 <article n:foreach="$articles as $article" id="article-{$article->id}" class="mt-4 mb-4">
-    <header class="article-header bg-light px-2 py-1">
-        <a n:href="Article:default $article->id">{$article->title}</a>
+    <header class="article-header bg-light px-2 py-1" >
+        <a n:href="Article:default $article->id">{$article->title}</a> |
         <a n:href="Homepage:default category=>$article->category->id"
                 class="badge badge-primary"
                 data-toggle="tooltip" data-placement="top" title="{$article->category->description}">

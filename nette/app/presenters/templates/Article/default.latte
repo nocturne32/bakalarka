@@ -3,8 +3,8 @@
 <article id="article-{$article->id}" class="mt-4 mb-4">
     <header class="article-header bg-light px-2 py-1">
         <h1>
-            <span n:block="title">{$article->title}</span>
-            <small><a n:href="Homepage:default category=>$article->category->id" class="badge badge-primary">
+            <span class="font-weight-normal" n:block="title">{$article->title}</span> |
+            <small class="font-weight-light"><a n:href="Homepage:default category=>$article->category->id">
                     {$article->category->label}</a></small>
         </h1>
     </header>

@@ -5,7 +5,7 @@
     {% for article in articles %}
         <article id="article-0" class="mt-4 mb-4">
             <header class="article-header bg-light px-2 py-1">
-                <a href="{{ path('app_article', {'id': article.id}) }}">{{ article.title }}</a>
+                <a href="{{ path('app_article', {'id': article.id}) }}">{{ article.title }}</a> |
                 <a href="{{ path('app_homepage', {'category': article.category.id}) }}"
                    class="badge badge-primary"
                    data-toggle="tooltip" data-placement="top"
