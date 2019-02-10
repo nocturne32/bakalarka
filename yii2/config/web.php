@@ -1,5 +1,11 @@
 <?php
 
+use yii\caching\FileCache;
+use app\models\User;
+use yii\swiftmailer\Mailer;
+use yii\log\FileTarget;
+use yii\gii\Module;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -14,20 +20,20 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'eYwixgdxFBF1_SV4U-Cf7xPL5xPxh9uh',
+            'cookieValidationKey' => 'EpRlMxmn_MurR5isCxObXqr8BH_iXb_H',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => FileCache::class,
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => User::class,
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => Mailer::class,
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
@@ -37,20 +43,32 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'login' => 'site/login',
+                'register' => 'site/register',
+
+                'articles/<id:\d+>/update' => 'article/update',
+                'articles/<id:\d+>/delete' => 'article/delete',
+                'articles/<id:\d+>' => 'article/view',
+                'articles/create' => 'article/create',
+                'articles' => 'article/index',
+
+//                'POST <controller:[\w-]+>' => '<controller>/create',
+//                '<controller:[\w-]+>s' => '<controller>/index',
+//                'PUT <controller:[\w-]+>/<id:\d+>'    => '<controller>/update',
+//                'DELETE <controller:[\w-]+>/<id:\d+>' => '<controller>/delete',
+//                '<controller:[\w-]+>/<id:\d+>'        => '<controller>/view',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
@@ -59,14 +77,14 @@ if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
+        'class' => \yii\debug\Module::class,
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
+        'class' => Module::class,
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
