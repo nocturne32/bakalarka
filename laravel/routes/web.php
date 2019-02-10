@@ -29,10 +29,5 @@ Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('app_
 Route::patch('/categories/{category}', 'CategoryController@update')->name('app_category_update');
 Route::delete('/categories/{category}', 'CategoryController@destroy')->name('app_category_delete');
 
-Route::get('/sign/in', 'SecurityController@in')->name('app_sign_in');
-Route::get('/sign/up', 'SecurityController@up')->name('app_sign_up');
-Route::get('/sign/out', 'SecurityController@out')->name('app_sign_out');
-
-
 Auth::routes();
 

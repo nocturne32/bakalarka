@@ -10,21 +10,31 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item {{ active('app_homepage') }}">
                     <a href="{{ route('app_homepage') }}" class="nav-link">Articles</a></li>
-                {{--@guest--}}
-                    <li class="nav-item {{ active('app_sign_in') }}">
-                        <a href="{{ route('app_sign_in') }}" class="nav-link">Sign in</a></li>
-                    <li class="nav-item {{ active('app_sign_up') }}">
-                        <a href="{{ route('app_sign_up') }}" class="nav-link">Sign up</a></li>
-                {{--@else--}}
+                @guest
+                    <li class="nav-item {{ active('login') }}">
+                        <a href="{{ route('login') }}" class="nav-link">Sign in</a></li>
+                    <li class="nav-item {{ active('register') }}">
+                        <a href="{{ route('register') }}" class="nav-link">Sign up</a></li>
+                @else
                     <li class="nav-item {{ active('app_article_add') }}">
                         <a href="{{ route('app_article_add') }}" class="nav-link">New article</a></li>
                     <li class="nav-item {{ active('app_article_list') }}">
                         <a href="{{ route('app_article_list') }}" class="nav-link">Edit articles</a></li>
                     <li class="nav-item {{ active('app_category_list') }}">
                         <a href="{{ route('app_category_list') }}" class="nav-link">Edit categories</a></li>
-                    <li class="nav-item {{ active('app_sign_out') }}">
-                        <a href="{{ route('app_sign_out') }}" class="nav-link">Sign out</a></li>
-                {{--@endguest--}}
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <li class="nav-item {{ active('logout') }}">
+                        <a href="{{ route('logout') }}" class="nav-link"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Sign out
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                @endguest
             </ul>
             <!--<form class="form-inline my-2 my-lg-0">-->
             <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class HomepageController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware('auth');
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -14,11 +19,11 @@ class HomepageController extends Controller
     public function index(Request $request)
     {
         if (isset($request['author'])) {
-            $articles = Article::where('user_id', $request['author'])->get();
+            $articles = Article::where('user_id', $request['author'])->get()->sortByDesc('id');
         } elseif (isset($request['category'])) {
-            $articles = Article::where('category_id', $request['category'])->get();
+            $articles = Article::where('category_id', $request['category'])->get()->sortByDesc('id');
         } else {
-            $articles = Article::all();
+            $articles = Article::all()->sortByDesc('id');
         }
 
 //        ze symfony

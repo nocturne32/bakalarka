@@ -18,6 +18,14 @@
 </header>
 
 <main class="page-main">
+    @if (session('status'))
+        <div class="card-body">
+
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        </div>
+    @endif
     @yield('content')
 </main>
 
@@ -32,7 +40,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>

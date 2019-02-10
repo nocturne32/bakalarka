@@ -6,9 +6,15 @@ use App\Article;
 use App\Category;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +52,7 @@ class ArticleController extends Controller
         try {
             Article::create([
                 'title' => $request['title'],
-                'user_id' => 1,
+                'user_id' => Auth::user()->id,
                 'category_id' => $request['category_id'],
                 'content' => $request['content']
             ]);
