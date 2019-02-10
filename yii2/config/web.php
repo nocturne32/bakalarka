@@ -62,6 +62,11 @@ $config = [
                 'articles/<id:\d+>' => 'article/view',
                 'articles/create' => 'article/create',
                 'articles' => 'article/index',
+                
+                'categories/<id:\d+>/edit' => 'category/update',
+                'categories/<id:\d+>/delete' => 'category/delete',
+                'categories/create' => 'category/create',
+                'categories' => 'category/index',
 
 //                'POST <controller:[\w-]+>' => '<controller>/create',
 //                '<controller:[\w-]+>s' => '<controller>/index',

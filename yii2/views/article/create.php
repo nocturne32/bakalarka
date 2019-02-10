@@ -5,7 +5,7 @@ use \yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $article app\models\Article */
 
-$this->title = 'Create Article';
+$this->title = 'Create article';
 $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
