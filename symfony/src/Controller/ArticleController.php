@@ -15,7 +15,7 @@ class ArticleController extends AbstractController
 {
 
     /**
-     * @Route("/article-list", name="app_article_list")
+     * @Route("/articles", name="app_article_list")
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @param EntityManagerInterface $em
      * @return Response
@@ -36,7 +36,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{id<\d+>}", name="app_article")
+     * @Route("/articles/{id<\d+>}", name="app_article")
      * @param EntityManagerInterface $em
      * @param int $id
      * @return Response
@@ -55,7 +55,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/add", name="app_article_add")
+     * @Route("/articles/create", name="app_article_add")
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -82,7 +82,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{id<\d+>}/edit", name="app_article_edit")
+     * @Route("/articles/{id<\d+>}/edit", name="app_article_edit")
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -117,7 +117,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{id<\d+>}/delete", name="app_article_delete")
+     * @Route("/articles/{id<\d+>}/delete", name="app_article_delete")
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      * @param EntityManagerInterface $em
      * @param int $id

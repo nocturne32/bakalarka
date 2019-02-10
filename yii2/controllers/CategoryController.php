@@ -36,7 +36,6 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -54,6 +53,9 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $category = new Category();
 
         if ($category->load(Yii::$app->request->post()) && $category->save()) {
@@ -74,6 +76,9 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $category = $this->findCategory($id);
 
         if ($category->load(Yii::$app->request->post()) && $category->save()) {
@@ -96,6 +101,9 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         try {
             $this->findCategory($id)->delete();
         } catch (yii\db\IntegrityException $exception) {

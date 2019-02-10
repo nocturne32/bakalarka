@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category-list", name="app_category_list")
+     * @Route("/categories", name="app_category_list")
      * @IsGranted("ROLE_ADMIN")
      * @param EntityManagerInterface $em
      * @return Response
@@ -30,7 +30,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/add", name="app_category_add")
+     * @Route("/categories/create", name="app_category_add")
      * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -56,7 +56,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/{id<\d+>}/edit", name="app_category_edit")
+     * @Route("/categories/{id<\d+>}/edit", name="app_category_edit")
      * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -91,7 +91,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/{id<\d+>}/delete", name="app_category_delete")
+     * @Route("/categories/{id<\d+>}/delete", name="app_category_delete")
      * @IsGranted("ROLE_ADMIN")
      * @param EntityManagerInterface $em
      * @param int $id
