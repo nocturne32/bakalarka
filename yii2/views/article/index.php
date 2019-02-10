@@ -23,18 +23,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <tbody>
         <?php foreach ($articles as $article) : ?>
             <tr>
-                <td><a href="#"><?= $article->title ?></a></td>
+                <td><a href="<?= Url::to("articles/{$article->id}") ?>"><?= Html::encode($article->title) ?></a></td>
                 <td>
-                    <a href="#"><?= $article->user->username ?></a>
+                    <a href="<?= Url::to("/?author={$article->user->id}") ?>"><?= Html::encode($article->user->username) ?></a>
                 </td>
                 <td>
-                    <a href="#"><?= $article->category->label ?></a>
+                    <a href="<?= Url::to("/?category={$article->category->id}") ?>"><?= Html::encode($article->category->label) ?></a>
                 </td>
                 <td>
                     <?= Html::a(Html::tag('i', '', ['class' => 'fas fa-pencil-alt']) . ' Edit', [
-                        'update', 'id' => $article->id], ['class' => 'btn btn-primary btn-sm']) ?>
+                        'update', 'id' => Html::encode($article->id)], ['class' => 'btn btn-primary btn-sm']) ?>
                     <?= Html::a(Html::tag('i', '', ['class' => 'fas fa-trash-alt']) . ' Delete', [
-                        'delete', 'id' => $article->id], [
+                        'delete', 'id' => Html::encode($article->id)], [
                         'class' => 'btn btn-danger btn-sm',
                         'data' => [
                             'confirm' => 'Are you sure you want to delete this item?',

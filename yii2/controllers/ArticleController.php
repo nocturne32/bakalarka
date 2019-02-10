@@ -35,6 +35,9 @@ class ArticleController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $articles = Article::find()->orderBy('id DESC')->all();
 
         return $this->render('index', [
@@ -62,6 +65,9 @@ class ArticleController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $article = new Article();
 
         if ($article->load(Yii::$app->request->post()) && $article->save()) {
@@ -82,6 +88,9 @@ class ArticleController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $article = $this->findArticle($id);
 
         if ($article->load(Yii::$app->request->post()) && $article->save()) {
@@ -99,9 +108,14 @@ class ArticleController extends Controller
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $this->findArticle($id)->delete();
 
         return $this->redirect(['index']);

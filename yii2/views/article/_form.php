@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($article, 'user_id')->hiddenInput(['value' => 1]) ?>
+<?= $form->field($article, 'user_id')->hiddenInput(['value' => Yii::$app->user->id]) ?>
 
 <?= $form->field($article, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Some title']) ?>
 <?= $form->field($article, 'category_id')->dropDownList($categories) ?>

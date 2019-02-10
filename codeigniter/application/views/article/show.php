@@ -10,7 +10,7 @@
                 </small>
             </h1>
         </header>
-        <p class="article-content px-2 py-1"><?= $article['content'] ?></p>
+        <p class="article-content px-2 py-1"><?= html_escape($article['content']) ?></p>
         <footer class="article-footer bg-light text-md-right px-2 py-1">
             <?= html_escape($article['created_at']) ?> - <a href="<?= base_url("?author={$article['user_id']}") ?>"
                                                               class="badge badge-danger"><?= html_escape($article['username']) ?></a>

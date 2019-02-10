@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $article app\models\Article */
 
-$this->title = 'Update Article: ' . $article->title;
+$this->title = 'Edit article';
 $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $article->title, 'url' => ['view', 'id' => $article->id]];
 $this->params['breadcrumbs'][] = 'Update';

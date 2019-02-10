@@ -1,7 +1,6 @@
 <?php
 
 use yii\caching\FileCache;
-use app\models\User;
 use yii\swiftmailer\Mailer;
 use yii\log\FileTarget;
 use yii\gii\Module;
@@ -26,11 +25,11 @@ $config = [
             'class' => FileCache::class,
         ],
         'user' => [
-            'identityClass' => User::class,
+            'identityClass' => \app\models\User::class,
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error/error',
         ],
         'mailer' => [
             'class' => Mailer::class,
@@ -53,10 +52,12 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'login' => 'site/login',
-                'register' => 'site/register',
+                '' => 'homepage/index',
+                'login' => 'security/login',
+                'register' => 'security/register',
+                'logout' => 'security/logout',
 
-                'articles/<id:\d+>/update' => 'article/update',
+                'articles/<id:\d+>/edit' => 'article/update',
                 'articles/<id:\d+>/delete' => 'article/delete',
                 'articles/<id:\d+>' => 'article/view',
                 'articles/create' => 'article/create',
