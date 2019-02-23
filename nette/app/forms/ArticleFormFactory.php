@@ -38,6 +38,7 @@ class ArticleFormFactory
     public function create(callable $onSuccess = null): Form
     {
         $form = $this->formFactory->create();
+        $form->addHidden('id');
         $form->addText('title', 'Title:')
             ->setRequired();
         $form->addSelect('category_id', 'Category:')
@@ -52,5 +53,19 @@ class ArticleFormFactory
         return $form;
     }
 
+    /**
+     * @param callable|null $onSuccess
+     * @return Form
+     */
+    public function delete(callable $onSuccess = null): Form
+    {
+        $form = $this->formFactory->create();
+        $form->addHidden('id');
+        $form->onSuccess[] = function ($form, $values) use ($onSuccess) {
+            $onSuccess($form, $values);
+        };
+        $form->addSubmit('submit', 'Delete');
+        return $form;
+    }
 
 }

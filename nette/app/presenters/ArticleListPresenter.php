@@ -2,14 +2,17 @@
 
 namespace App\Presenters;
 
+use App\Forms\ArticleFormFactory;
 use App\Model\ArticleFacade;
-use App\Model\ArticleListFacade;
+use Nette\Application\UI\Form;
 
 
 class ArticleListPresenter extends BasePresenter
 {
     /** @var ArticleFacade @inject */
     public $articleFacade;
+    /** @var ArticleFormFactory @inject */
+    public $articleFormFactory;
 
     public function renderDefault(): void
     {
@@ -34,5 +37,19 @@ class ArticleListPresenter extends BasePresenter
         $this->flashMessage("Article \"{$article->title}\" has been deleted!", 'alert-danger');
         $article->delete();
         $this->redirect('ArticleList:default');
+    }
+
+
+    /**
+     * @return Form
+     */
+    protected function createComponentDelete(): Form
+    {
+        return $this->articleFormFactory->delete(function ($form, $values) {
+            $article = $this->articleFacade->getArticle($values->id);
+            $this->flashMessage("Article \"{$article->title}\" has been deleted!", 'alert-danger');
+            $article->delete();
+            $this->redirect('ArticleList:default');
+        });
     }
 }

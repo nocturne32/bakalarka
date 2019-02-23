@@ -37,7 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'delete', 'id' => Html::encode($article->id)], [
                         'class' => 'btn btn-danger btn-sm',
                         'data' => [
-                            'confirm' => 'Are you sure you want to delete this item?',
                             'method' => 'post',
                         ],
                     ]) ?>

@@ -44,10 +44,24 @@ class ArticlePresenter extends BasePresenter
      */
     public function handleDelete(int $id): void
     {
-        $article = $this->articleListFacade->getArticle($id);
+        $article = $this->articleFacade->getArticle($id);
         $this->flashMessage("Article \"{$article->title}\" has been deleted!", 'alert-danger');
         $article->delete();
         $this->redirect('ArticleList:default');
+    }
+
+
+    /**
+     * @return Form
+     */
+    protected function createComponentDelete()
+    {
+        return $this->articleFormFactory->delete(function ($form, $values) {
+            $article = $this->articleFacade->getArticle($values->id);
+            $this->flashMessage("Article \"{$article->title}\" has been deleted!", 'alert-danger');
+            $article->delete();
+            $this->redirect('ArticleList:default');
+        });
     }
 
     /**
@@ -57,6 +71,7 @@ class ArticlePresenter extends BasePresenter
     protected function createComponentAddForm(): Form
     {
         return $this->articleFormFactory->create(function ($form, $values) {
+            unset($values->id);
             $values->created_at = new \DateTimeImmutable('now');
             $values->user_id = $this->user->getId();
             $this->articleFacade->insertArticle($values);
@@ -74,7 +89,7 @@ class ArticlePresenter extends BasePresenter
             $article = $this->articleFacade->getArticle($values->id);
             $article->update($values);
             $this->flashMessage("Article \"{$article->title}\" has been edited!", 'alert-success');
-            $this->redirect('Article:edit');
+            $this->redirect('ArticleList:default');
         });
     }
 }

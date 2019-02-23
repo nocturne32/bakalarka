@@ -18,8 +18,11 @@
         <td>
             <a n:href="Article:edit $article->id" class="btn btn-primary btn-sm">
                 <i class="fas fa-pencil-alt"></i>&nbsp;Edit</a>
-            <a n:href="delete! $article->id" class="btn btn-danger btn-sm">
-                <i class="fas fa-trash-alt"></i>&nbsp;Delete</a>
+            {form delete}
+                {input id, value=>$article->id}
+                <a href="#" class="btn btn-danger btn-sm" onclick="document.getElementById('frm-delete').submit();">
+                    <i class="fas fa-trash-alt"></i>&nbsp;Delete</a>
+            {/form}
         </td>
     </tr>
     </tbody>

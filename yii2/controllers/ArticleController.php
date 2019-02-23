@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Article;
 use yii\data\ActiveDataProvider;
+use yii\filters\PageCache;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,13 @@ class ArticleController extends Controller
     public function behaviors()
     {
         return [
+//            [
+//                'class' => PageCache::class,
+//                'duration' => 60,
+//                'variations' => [
+//                    \Yii::$app->language,
+//                ],
+//            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [

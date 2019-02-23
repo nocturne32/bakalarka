@@ -4,10 +4,24 @@ namespace app\controllers;
 
 use app\models\Article;
 use Yii;
+use yii\filters\PageCache;
 use yii\web\Controller;
 
 class HomepageController extends Controller
 {
+//    public function behaviors()
+//    {
+//        return [
+//            [
+//                'class' => PageCache::class,
+//                'duration' => 60,
+//                'variations' => [
+//                    \Yii::$app->language,
+//                ],
+//            ],
+//        ];
+//    }
+
     /**
      * Displays homepage.
      *

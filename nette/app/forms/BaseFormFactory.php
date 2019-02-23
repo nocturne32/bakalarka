@@ -16,7 +16,7 @@ class BaseFormFactory
     public function create(): Form
     {
         $form = new Form();
-        $form->addProtection();
+        $form->addProtection('Vypršel časový limit, odešlete formulář znovu.');
         return $form;
     }
 

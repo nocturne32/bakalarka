@@ -15,7 +15,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager): void
     {
-        for ($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $article = new Article();
             $article->setTitle('Some title #' . $i);
             $article->setContent($this->randomContent(random_int(0, 4)));
