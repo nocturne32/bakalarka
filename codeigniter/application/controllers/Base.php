@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @property article_model $article_model
- * @property category_model $category_model
- * @property user_model $user_model
+ * @property Article_model $article_model
+ * @property Category_model $category_model
+ * @property User_model $user_model
  * @property CI_Form_validation $form_validation
  * @property CI_Input $input
  * @property CI_Session $session

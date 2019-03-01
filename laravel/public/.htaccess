@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+#    <IfModule mod_negotiation.c>
+#        Options -MultiViews -Indexes
+#    </IfModule>
 
     RewriteEngine On
 
@@ -18,4 +18,45 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+    
+    
+    SetEnv APP_NAME Laravel
+    SetEnv APP_ENV production
+    SetEnv APP_KEY base64:DLFKR14gZ6TTa0c9dCt1VpxSnUhPaPgOmURlB6ZVxXo=
+    SetEnv APP_DEBUG false
+    SetEnv APP_URL http://laravel.davidpocar.eu
+    
+    SetEnv LOG_CHANNEL stack
+    
+    SetEnv DB_CONNECTION mysql
+    SetEnv DB_HOST md37.wedos.net
+    SetEnv DB_PORT 3306
+    SetEnv DB_DATABASE d215188_bak
+    SetEnv DB_USERNAME w215188_bak
+    SetEnv DB_PASSWORD B@k@l@r(a0
+    
+    SetEnv BROADCAST_DRIVER log
+    SetEnv CACHE_DRIVER file
+    SetEnv QUEUE_CONNECTION sync
+    SetEnv SESSION_DRIVER file
+    SetEnv SESSION_LIFETIME 120
+    
+    SetEnv REDIS_HOST 127.0.0.1
+    SetEnv REDIS_PASSWORD null
+    SetEnv REDIS_PORT 6379
+    
+    SetEnv MAIL_DRIVER smtp
+    SetEnv MAIL_HOST smtp.mailtrap.io
+    SetEnv MAIL_PORT 2525
+    SetEnv MAIL_USERNAME null
+    SetEnv MAIL_PASSWORD null
+    SetEnv MAIL_ENCRYPTION null
+    
+    SetEnv PUSHER_APP_ID 
+    SetEnv PUSHER_APP_KEY 
+    SetEnv PUSHER_APP_SECRET 
+    SetEnv PUSHER_APP_CLUSTER mt1
+    
+    SetEnv MIX_PUSHER_APP_KEY ${PUSHER_APP_KEY}
+    SetEnv MIX_PUSHER_APP_CLUSTER ${PUSHER_APP_CLUSTER}
 </IfModule>

@@ -5,7 +5,7 @@
  * @property CI_DB $db
  * @property CI_Session $session
  */
-class article_model extends CI_Model
+class Article_model extends CI_Model
 {
 
     /**
