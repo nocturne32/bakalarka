@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'bakalarka',
+	'hostname' => 'md37.wedos.net',
+	'username' => 'w215188_bak',
+	'password' => 'B@k@l@r(a0',
+	'database' => 'd215188_bak',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

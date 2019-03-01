@@ -4,9 +4,9 @@ use yii\db\Connection;
 
 return [
     'class' => Connection::class,
-    'dsn' => 'mysql:host=localhost;dbname=bakalarka',
-    'username' => 'root',
-    'password' => 'root',
+    'dsn' => 'mysql:host=md37.wedos.net;dbname=d215188_bak',
+    'username' => 'w215188_bak',
+    'password' => 'B@k@l@r(a0',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
