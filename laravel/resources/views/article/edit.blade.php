@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="py-4">Edit article</h1>
-        <form class="mt-4 mb-4" method="POST" action="{{ route('app_category_update', $article->id) }}">
+        <form class="mt-4 mb-4" method="POST" action="{{ route('app_article_update', $article->id) }}">
             @method('PATCH')
             @csrf
             <div class="form-group">
